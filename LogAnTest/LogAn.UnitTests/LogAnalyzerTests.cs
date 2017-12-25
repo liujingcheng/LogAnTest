@@ -9,34 +9,16 @@ namespace LogAn.UnitTests
     [TestFixture]
     public class LogAnalyzerTests
     {
-        [Test]
-        public void IsValidLogFileName_BadExtension_ReturnFalse()
+        [TestCase("filewithgoodextension.SLF", true)]
+        [TestCase("filewithgoodextension.slf", true)]
+        [TestCase("filewithbadextenson.foo", false)]
+        public void IsValidLogFileName_VariousExtensions_ReturnTrue(string file, bool expected)
         {
             LogAnalyzer analyzer = new LogAnalyzer();
 
-            bool result = analyzer.IsValidLogFileName("filewithbadextenson.foo");
+            bool result = analyzer.IsValidLogFileName(file);
 
-            Assert.False(result);
-        }
-
-        [Test]
-        public void IsValidLogFileName_GoodExtensionLowercase_ReturnTrue()
-        {
-            LogAnalyzer analyzer = new LogAnalyzer();
-            ;
-            bool result = analyzer.IsValidLogFileName("filewithgoodextension.slf");
-
-            Assert.True(result);
-        }
-
-        [Test]
-        public void IsValidLogFileName_GoodExtensionUppercase_ReturnTrue()
-        {
-            LogAnalyzer analyzer = new LogAnalyzer();
-
-            bool result = analyzer.IsValidLogFileName("filewithgoodextension.SLF");
-
-            Assert.True(result);
+            Assert.AreEqual(expected, result);
         }
 
     }
