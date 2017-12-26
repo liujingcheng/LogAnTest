@@ -37,5 +37,15 @@ namespace LogAn.UnitTests
             return new LogAnalyzer();
         }
 
+        [Test]
+        public void IsValidFileName_WhenCalled_ChangesWasFileNameValid()
+        {
+            var la = MakeAnalyzer();
+
+            la.IsValidLogFileName("badname.foo");
+
+            Assert.False(la.WasLastFileNameValid);
+        }
+
     }
 }
