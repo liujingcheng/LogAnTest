@@ -7,6 +7,22 @@ namespace LogAn
 {
     public class LogAnalyzer
     {
+        private IWebService _service;
+        public LogAnalyzer(IWebService service)
+        {
+            this._service = service;
+        }
+
+        public void Analyze(string fileName)
+        {
+            if (fileName.Length < 8)
+            {
+                _service.LogError("Filename too short:" + fileName);
+            }
+        }
+
+
+        public LogAnalyzer() { }
         public bool WasLastFileNameValid { get; set; }
         public bool IsValidLogFileName(string fileName)
         {
@@ -16,7 +32,7 @@ namespace LogAn
             {
                 throw new ArgumentException("filename has to be provided");
             }
-            if (!fileName.EndsWith(".SLF",StringComparison.CurrentCultureIgnoreCase))
+            if (!fileName.EndsWith(".SLF", StringComparison.CurrentCultureIgnoreCase))
             {
                 return false;
             }
@@ -24,5 +40,8 @@ namespace LogAn
             WasLastFileNameValid = true;
             return true;
         }
+
+
+
     }
 }
