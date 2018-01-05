@@ -17,7 +17,13 @@ namespace LogAn
         {
             if (fileName.Length < 8)
             {
+                try
+                {
                 _service.LogError("Filename too short:" + fileName);
+                }
+                catch (Exception e)
+                {
+                }
             }
         }
 

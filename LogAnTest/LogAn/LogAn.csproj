@@ -43,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailInfo.cs" />
+    <Compile Include="IEmailService.cs" />
     <Compile Include="IWebService.cs" />
+    <Compile Include="LogAnalyzer2.cs" />
     <Compile Include="LogAnalyzer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

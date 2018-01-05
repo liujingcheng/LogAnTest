@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeEmailService.cs" />
     <Compile Include="FakeWebService.cs" />
+    <Compile Include="LogAnalyzer2Tests.cs" />
     <Compile Include="LogAnalyzerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
