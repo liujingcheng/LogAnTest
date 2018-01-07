@@ -29,7 +29,15 @@ namespace LogAn.UnitTests
                 Subject = "can't log"
             };
 
-            Assert.AreEqual(expectedEmail, mockEmailService.Email);
+            StringAssert.AreEqualIgnoringCase(expectedEmail.Body, mockEmailService.Email.Body);
+            StringAssert.AreEqualIgnoringCase(expectedEmail.To, mockEmailService.Email.To);
+            StringAssert.AreEqualIgnoringCase(expectedEmail.Subject, mockEmailService.Email.Subject);
+
+            Assert.AreEqual(expectedEmail.Body, mockEmailService.Email.Body);
+            Assert.AreEqual(expectedEmail.To, mockEmailService.Email.To);
+            Assert.AreEqual(expectedEmail.Subject, mockEmailService.Email.Subject);
+
+            Assert.AreEqual(expectedEmail, mockEmailService.Email);//失败，不知为何
         }
 
     }

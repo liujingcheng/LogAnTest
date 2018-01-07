@@ -23,7 +23,7 @@ namespace LogAn
                 try
                 {
                     Service.LogError("Filename too short:" + fileName);
-                    throw new Exception();
+                    throw new Exception("fake exception");
                 }
                 catch (Exception e)
                 {
