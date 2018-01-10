@@ -7,6 +7,7 @@ namespace LogAn
 {
     public class LogAnalyzer
     {
+        public int MinNameLength = 8;
         private IWebService _service;
         public LogAnalyzer(IWebService service)
         {
@@ -15,7 +16,7 @@ namespace LogAn
 
         public void Analyze(string fileName)
         {
-            if (fileName.Length < 8)
+            if (fileName.Length < MinNameLength)
             {
                 try
                 {

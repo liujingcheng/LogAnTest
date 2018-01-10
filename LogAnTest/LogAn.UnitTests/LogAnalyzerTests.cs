@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace LogAn.UnitTests
@@ -58,6 +59,19 @@ namespace LogAn.UnitTests
             log.Analyze(tooShortFileName);
 
             StringAssert.Contains("Filename too short:abc.ext", mockService.LastError);
+        }
+
+        [Test]
+        public void Analyze_TooShortFileName_CallLogger()
+        {
+            IWebService logger = Substitute.For<IWebService>();
+            LogAnalyzer analyzer = new LogAnalyzer(logger);
+
+            analyzer.MinNameLength = 6;
+            analyzer.Analyze("a.txt");
+
+            logger.Received().LogError("Filename too short:a.txt");
+
         }
 
     }
