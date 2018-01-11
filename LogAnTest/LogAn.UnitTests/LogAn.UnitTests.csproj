@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventRelatedTests.cs" />
     <Compile Include="FakeEmailService.cs" />
     <Compile Include="FakeWebService.cs" />
     <Compile Include="LogAnalyzer2Tests.cs" />
