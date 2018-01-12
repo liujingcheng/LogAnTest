@@ -31,7 +31,18 @@ namespace LogAn.UnitTests
             stubView.ErrorOccured += Raise.Event<Action<string>>("fake error");
 
             mockLogger.Received().LogError(Arg.Is<string>(s => s.Contains("fake error")));
+        }
 
+        [Test]
+        public void EventFiringManual()
+        {
+            bool loaded = false;
+            IView view = Substitute.For<IView>();
+            view.Loaded += delegate { loaded = true; };
+
+            view.Loaded += Raise.Event<Action>();
+
+            Assert.IsTrue(loaded);
         }
 
     }
